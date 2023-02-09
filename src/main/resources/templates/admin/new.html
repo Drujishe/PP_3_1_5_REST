@@ -29,9 +29,8 @@
 
 <div class="container-fluid">
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" th:href="@{#}" style="color: white"
-           th:text="'Пользователь ' + ${person.username} + ' в роли: ' + ${person.showRoles()}"></a>
-        <a th:href="@{/logout}" style="color: lightgray" th:text="'Выйти'"></a>
+        <a id="info" class="navbar-brand" th:href="@{#}" style="color: white"></a>
+        <a th:href="@{/logout}" style="color: lightgray">Выйти</a>
     </nav>
 
     <div class="row">
@@ -50,7 +49,7 @@
                 <!-- НАВИГАЦИЯ -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin/}" >Таблица пользователей</a>
+                        <a class="nav-link" th:href="@{/admin}">Таблица пользователей</a>
                     </li>
                     <li class="nav-item" data-toggle="tab">
                         <a class="nav-link active">Новый пользователь</a>
@@ -63,57 +62,50 @@
                     </div>
                     <div class="card-body text-center col-6 mx-auto">
                         <form role="form"
-                              th:method="POST"
-                              th:object="${user}"
-                              th:action="@{/admin/new}">
+                              method="POST">
                             <div class="form-group">
-                                <div class="font-weight-bold" for="surname">Фамилия</div>
-                                <input th:field="${user.surname}"
-                                       th:name="surname"
+                                <div class="font-weight-bold">Фамилия</div>
+                                <input id="surname"
                                        type="text" class="form-control"
-                                       id="surname"
                                        placeholder="фамилия">
                             </div>
                             <div class="form-group">
-                                <div class="font-weight-bold" for="name">Имя</div>
-                                <input th:field="${user.name}"
-                                       th:name="name"
-                                       type="text" class="form-control" id="name"
+                                <div class="font-weight-bold">Имя</div>
+                                <input type="text" class="form-control"
+                                       id="name"
                                        placeholder="имя">
                             </div>
                             <div class="form-group">
-                                <div class="font-weight-bold" for="age">Возраст</div>
-                                <input th:field="${user.age}"
-                                       type="number" class="form-control" id="age"
+                                <div class="font-weight-bold">Возраст</div>
+                                <input type="number" class="form-control"
+                                       id="age"
                                        placeholder="возраст">
                             </div>
                             <div class="form-group">
-                                <div class="font-weight-bold" for="username">Логин</div>
-                                <input th:field="${user.username}"
-                                       type="text" class="form-control"
+                                <div class="font-weight-bold">Логин</div>
+                                <input type="text" class="form-control"
                                        id="username"
                                        placeholder="логин">
                             </div>
                             <div class="form-group">
-                                <div class="font-weight-bold" for="password">Пароль</div>
-                                <input th:field="${user.password}"
-                                       type="password" class="form-control"
+                                <div class="font-weight-bold">Пароль</div>
+                                <input type="password" class="form-control"
                                        id="password" placeholder="пароль">
                             </div>
                             <div class="form-group">
-                                <div class="font-weight-bold" for="roles">Роли</div>
-                                <select multiple class="form-control form-control-sm" id="roles"
-                                        name="roles" size="2" required>
-                                    <option th:each="role: ${roles}"
-                                            th:value="${role.roleId}"
-                                            th:text="${role.roleName}">
-                                    </option>
+                                <div class="font-weight-bold">Роли</div>
+                                <select multiple class="form-control form-control-sm"
+                                        id="roles"
+                                        size="2" required>
+
+<!--                                    ЗДЕСЬ БУДУТ ЛЕЖАТЬ OPTIONS-->
+
                                 </select>
                             </div>
                             <!--                                КНОПКИ-->
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-success mx-auto"
-                                        th:text="'Добавить пользователя'">Save changes
+                                <button id="addButton" type="button" class="btn btn-success mx-auto">
+                                    Добавить пользователя
                                 </button>
                             </div>
                         </form>
@@ -122,7 +114,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 
@@ -135,5 +126,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<script type="module" src="/js/page_admin/NewUserPage.js"></script>
 </body>
 </html>

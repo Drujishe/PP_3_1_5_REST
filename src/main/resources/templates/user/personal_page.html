@@ -29,9 +29,9 @@
 
 <div class="container-fluid">
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" th:href="@{#}" style="color: white"
-           th:text="'Пользователь ' + ${person.username} + ' в роли: ' + ${person.showRoles()}"></a>
-        <a th:href="@{/logout}" style="color: lightgray" th:text="'Выйти'"></a>
+        <a id="info"
+           class="navbar-brand" th:href="@{#}" style="color: white"></a>
+        <a th:href="@{/logout}" style="color: lightgray">Выйти</a>
     </nav>
 
     <div class="row">
@@ -63,12 +63,12 @@
                                 <th scope="col">Роль</th>
                             </tr>
                             <tr>
-                                <td th:text="${person.id}"/>
-                                <td th:text="${person.surname}"/>
-                                <td th:text="${person.name}"/>
-                                <td th:text="${person.age}"/>
-                                <td th:text="${person.username}"/>
-                                <td th:text="${person.showRoles()}"/>
+                                <td id="id"></td>
+                                <td id="surname"></td>
+                                <td id="name"></td>
+                                <td id="age"></td>
+                                <td id="username"></td>
+                                <td id="roles"></td>
                             </tr>
                         </table>
                     </div>
@@ -88,5 +88,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+<script type="module" src="/js/page_user/UserPage.js"></script>
 </body>
 </html>

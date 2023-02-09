@@ -1,5 +1,7 @@
 package ru.drujishe.boot_security.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -8,15 +10,16 @@ import java.util.*;
 @Entity
 @Table(name = "table_roles")
 public class Role implements GrantedAuthority {
+    @JsonProperty("roleName")
     private String roleName;
-    @Id
-
+    @Id @JsonProperty("roleId")
     private long roleId;
 
     public Role() {
     }
 
     @ManyToMany(mappedBy = "roles")
+    @JsonBackReference
     Set<Person> users = new HashSet<>();
 
     public Set<Person> getUsers() {
@@ -30,6 +33,10 @@ public class Role implements GrantedAuthority {
     public Role(long roleId, String roleName) {
         this.roleName = roleName;
         this.roleId = roleId;
+    }
+
+    public Role(long roleId) {
+        this(roleId, getAllRoles().get((int) roleId).roleName);
     }
 
     public Role(String roleName, long roleId, Set<Person> users) {

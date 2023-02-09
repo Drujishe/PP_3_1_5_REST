@@ -1,6 +1,8 @@
 package ru.drujishe.boot_security.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.parameters.P;
@@ -30,6 +32,7 @@ public class Person implements UserDetails {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
+    @JsonManagedReference
     private Set<Role> roles;
 
 

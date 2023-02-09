@@ -29,8 +29,7 @@
 
 <div class="container-fluid">
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" th:href="@{#}" style="color: white"
-           th:text="'Пользователь ' + ${person.username} + ' в роли: ' + ${person.showRoles()}"></a>
+        <a id="info" class="navbar-brand" th:href="@{#}" style="color: white"></a>
         <a th:href="@{/logout}" style="color: lightgray" th:text="'Выйти'"></a>
     </nav>
 
@@ -38,8 +37,8 @@
         <!-- НАВИГАЦИЯ СЛЕВА -->
         <div class="col-2">
             <div class="nav flex-column nav-pills pt-4" aria-orientation="vertical">
-                <a class="nav-link active" th:href="@{/admin}"> Admin</a>
-                <a class="nav-link" th:href="@{/user}"> User</a>
+                <a class="nav-link active" th:href="@{/admin/}"> Admin</a>
+                <a class="nav-link" th:href="@{/user/}"> User</a>
             </div>
         </div>
 
@@ -53,7 +52,7 @@
                         <a class="nav-link active">Таблица пользователей</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin/new/}">Новый пользователь</a>
+                        <a class="nav-link" th:href="@{/admin/new}">Новый пользователь</a>
                     </li>
                 </ul>
                 <!-- ТАБЛИЦА С ПОЛЬЗОВАТЕЛЯМИ -->
@@ -79,6 +78,10 @@
 
                     </div>
                 </div>
+
+                <div class="container" id="modals">
+                    <!-- МОДАЛЬНЫЕ ОКНА -->
+                </div>
             </div>
         </div>
     </div>
@@ -94,7 +97,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-<script th:src="@{static/myscript.js}"></script>
+<script type="module" src="/js/page_admin/AdminPage.js"></script>
 
 </body>
 </html>

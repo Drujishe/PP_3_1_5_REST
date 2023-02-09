@@ -36,6 +36,4 @@ public class MainPageController {
         return "login";
     }
 
-    @GetMapping("/hello")
-    public String hello(){return "hellopage";}
 }
